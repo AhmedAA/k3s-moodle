@@ -42,6 +42,11 @@ The repository uses Kustomize to manage multiple Moodle instances from a single 
 * An external MariaDB server (10.11+).
 * Flux CLI installed on your management machine/VPS.
 
+```bash
+curl -s https://fluxcd.io/install.sh | sudo bash
+flux check --pre
+```
+
 ## Deployment Workflow
 
 ### 1. Build and Push the Container Image
@@ -56,7 +61,9 @@ docker push ghcr.io/your-org/moodle-custom:latest
 
 ### 2. Apply Out-of-Band Secrets
 
-To prevent "harvest now, decrypt later" attacks, database credentials and API keys (e.g., Viva Wallet) are **not** tracked in this Git repository. They must be provisioned manually before Flux deploys the application.
+To prevent "harvest now, decrypt later" attacks, database credentials and API
+keys (e.g., Viva Wallet) are **not** tracked in this Git repository. They must
+be provisioned manually before Flux deploys the application.
 
 1. Create a local template based on your configuration requirements.
 2. Apply it directly to the cluster:
