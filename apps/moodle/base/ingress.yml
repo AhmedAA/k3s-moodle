@@ -11,10 +11,10 @@ spec:
   ingressClassName: traefik
   tls:
   - hosts:
-    - studieportal.maahad.dk
+    - moodle.host
     secretName: tls-secret
   rules:
-  - host: studieportal.maahad.dk
+  - host: moodle.host
     http:
       paths:
       - path: /
