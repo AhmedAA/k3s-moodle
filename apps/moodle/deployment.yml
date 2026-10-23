@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moodle
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: moodle
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: moodle
+    spec:
+      containers:
+      - name: moodle
+        image: your-registry/moodle-custom:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 500m
+            memory: 512Mi
+          limits:
+            cpu: 750m
+            memory: 1024Mi
+        env:
+        - name: APACHE_HTTP_TIMEOUT
+          value: "300"
+        volumeMounts:
+        - name: moodledata
+          mountPath: /var/www/moodledata
+        - name: moodle-config
+          mountPath: /var/www/html/config.php
+          subPath: config.php
+      volumes:
+      - name: moodledata
+        persistentVolumeClaim:
+          claimName: moodle-nfs-pvc
+      - name: moodle-config
+        secret:
+          secretName: moodle-config-secret
