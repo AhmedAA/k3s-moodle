@@ -3,7 +3,7 @@ name: Build and Push Moodle Image
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - 'Containerfile'
       - '99-custom.ini'
