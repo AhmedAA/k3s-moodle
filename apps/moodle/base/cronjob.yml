@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
           - name: moodle-cron
-            image: ghcr.io/ahmedaa/k3s-moodle:latest
+            image: ghcr.io/ahmedaa/k3s-moodle:5.3.0
             command: ["php", "/var/www/html/admin/cli/cron.php"]
             volumeMounts:
             - name: moodledata

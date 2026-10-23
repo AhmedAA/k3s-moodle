@@ -1,4 +1,4 @@
-FROM public.ecr.aws/aikido-dev/php:8.2.35-apache
+FROM public.ecr.aws/aikido-dev/php:8.3.36-apache
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
