@@ -5,7 +5,6 @@ metadata:
   namespace: default
 spec:
   schedule: "* * * * *"
-  concurrencyPolicy: Forbid
   jobTemplate:
     spec:
       template:
@@ -17,8 +16,14 @@ spec:
             volumeMounts:
             - name: moodledata
               mountPath: /var/www/moodledata
+            - name: moodle-config
+              mountPath: /var/www/html/config.php
+              subPath: config.php
           restartPolicy: OnFailure
           volumes:
           - name: moodledata
             persistentVolumeClaim:
               claimName: moodle-nfs-pvc
+          - name: moodle-config
+            secret:
+              secretName: moodle-config-secret
