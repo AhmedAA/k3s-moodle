@@ -1,4 +1,4 @@
-FROM public.ecr.aws/aikido-dev/php:8.2.35
+FROM public.ecr.aws/aikido-dev/php:8.2.35-apache
 
 # Install Moodle required dependencies
 RUN apt-get update && apt-get install -y \
