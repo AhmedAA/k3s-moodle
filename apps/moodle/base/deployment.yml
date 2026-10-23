@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: moodle
-        image: your-registry/moodle-custom:latest
+        image: ghcr.io/ahmedaa/k3s-moodle:latest
         imagePullPolicy: Always
         resources:
           requests:
