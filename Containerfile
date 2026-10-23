@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     && a2enmod rewrite
 
 COPY 99-custom.ini /usr/local/etc/php/conf.d/
+RUN echo "display_errors = Off" > /usr/local/etc/php/conf.d/moodle-errors.ini
 
 ENV MOODLE_VERSION=503
 RUN curl -L https://download.moodle.org/download.php/direct/stable${MOODLE_VERSION}/moodle-latest-${MOODLE_VERSION}.tgz | tar -xz -C /var/www/ \
