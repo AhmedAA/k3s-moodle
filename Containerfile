@@ -24,7 +24,9 @@ RUN curl -L https://download.moodle.org/download.php/direct/stable${MOODLE_VERSI
 # Download and extract Academi theme
 RUN curl -L -o /tmp/academi.zip "https://github.com/lmsace/academi/releases/download/v5.3.0/theme_academi-v5.3.zip" \
     && unzip /tmp/academi.zip -d /var/www/html/theme/ \
-    && rm /tmp/academi.zip
+    && rm /tmp/academi.zip \
+    && mv /var/www/html/theme/theme_academi* /var/www/html/theme/academi \
+    && chown -R www-data:www-data /var/www/html/theme/academi
 
 # Set permissions for webroot and create moodledata
 RUN chown -R www-data:www-data /var/www/html \
