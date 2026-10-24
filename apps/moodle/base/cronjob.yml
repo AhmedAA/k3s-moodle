@@ -5,18 +5,18 @@ metadata:
   namespace: default
 spec:
   schedule: "* * * * *"
-  # Enforce single execution: Never run overlapping cron runs
   concurrencyPolicy: Forbid
-  # Keep cluster history tidy
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
-      # Do not retry failed jobs repeatedly; wait for the next minute's run
+      # Automatically delete completed pods and jobs 30 seconds after finishing
+      ttlSecondsAfterFinished: 30
+      # Kill the pod if a single cron run hangs for more than 120 seconds
+      activeDeadlineSeconds: 120
       backoffLimit: 0
       template:
         spec:
-          # Exit immediately on failure instead of looping inside the pod
           restartPolicy: Never
           containers:
           - name: moodle-cron
