@@ -20,7 +20,7 @@ spec:
           restartPolicy: Never
           containers:
           - name: moodle-cron
-            image: ghcr.io/ahmedaa/k3s-moodle:5.3.1
+            image: ghcr.io/ahmedaa/k3s-moodle:5.3.2
             command: ["php", "/var/www/html/admin/cli/cron.php"]
             volumeMounts:
             - name: moodledata
