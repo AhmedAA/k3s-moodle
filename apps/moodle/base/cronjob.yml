@@ -10,9 +10,7 @@ spec:
   failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
-      # Force Kubernetes to terminate the pod if execution exceeds 120 seconds
-      activeDeadlineSeconds: 120
-      # Automatically clean up completed/failed pods after 30 seconds
+      activeDeadlineSeconds: 900
       ttlSecondsAfterFinished: 30
       backoffLimit: 0
       template:
