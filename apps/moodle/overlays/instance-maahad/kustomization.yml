@@ -5,7 +5,6 @@ resources:
 patches:
   - path: patch-ingress.yml
   - path: deployment-patch.yml
-  - path: cronjob-patch.yml
 configMapGenerator:
   - name: vivawallet-scripts
     namespace: default
