@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: moodle-cron
+spec:
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: moodle-cron
+            volumeMounts:
+            - name: vivawallet-volume
+              mountPath: /var/www/html/public/local/vivawallet
+          volumes:
+          - name: vivawallet-volume
+            configMap:
+              name: vivawallet-scripts
