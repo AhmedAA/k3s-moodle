@@ -9,7 +9,7 @@ spec:
       - name: moodle
         volumeMounts:
         - name: vivawallet-volume
-          mountPath: /var/www/html/local/vivawallet
+          mountPath: /var/www/html/public/local/vivawallet
       volumes:
       - name: vivawallet-volume
         configMap:

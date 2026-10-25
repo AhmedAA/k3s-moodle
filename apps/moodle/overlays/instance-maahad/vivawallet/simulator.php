@@ -1,6 +1,5 @@
 <?php
-// /opt/bitnami/moodle/local/vivawallet/simulator.php
-require_once(__DIR__ . '/../../config.php');
+require_once(__DIR__ . '/../../../config.php');
 require_login();
 
 global $USER, $CFG, $DB;
