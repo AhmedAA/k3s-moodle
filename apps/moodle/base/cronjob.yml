@@ -15,6 +15,10 @@ spec:
       backoffLimit: 0
       template:
         spec:
+          securityContext:
+            runAsUser: 33
+            runAsGroup: 33
+            fsGroup: 33
           restartPolicy: Never
           containers:
           - name: moodle-cron
