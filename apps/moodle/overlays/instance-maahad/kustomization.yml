@@ -4,3 +4,10 @@ resources:
   - ../../base
 patches:
   - path: patch-ingress.yml
+  - path: deployment-patch.yml
+configMapGenerator:
+  - name: vivawallet-scripts
+    files:
+      - vivawallet/gateway.php
+      - vivawallet/simulator.php
+      - vivawallet/webhook.php
