@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: moodle-cron
+spec:
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          securityContext:
+            runAsUser: 33
+            runAsGroup: 33
+            fsGroup: 33
+          containers:
+          - name: moodle-cron
+            command:
+            - php
+            - "/var/www/html/admin/cli/cron.php"
