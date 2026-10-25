@@ -7,6 +7,7 @@ patches:
   - path: deployment-patch.yml
 configMapGenerator:
   - name: vivawallet-scripts
+    namespace: default
     files:
       - vivawallet/gateway.php
       - vivawallet/simulator.php
