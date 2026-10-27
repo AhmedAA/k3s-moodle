@@ -4,7 +4,7 @@ This repository contains the GitOps configuration for deploying and managing Moo
 
 The architecture has been modernized from a legacy Bitnami Helm chart to a fully
 declarative GitOps workflow using **Flux CD**. It uses a custom immutable Docker
-image based on Aikido Security's hardened PHP 8.2 base to automatically patch
+image based on Aikido Security's hardened PHP 8.3 base to automatically patch
 critical vulnerabilities (e.g., PHP2Shell), separating application code from
 stateful data.
 
@@ -39,7 +39,7 @@ The repository uses Kustomize to manage multiple Moodle instances from a single 
 
 * A k3s cluster with an operational Traefik ingress controller.
 * An NFS server accessible by the k3s nodes.
-* An external MariaDB server (10.11+).
+* An external MariaDB server (11.4+).
 * Flux CLI installed on your management machine/VPS.
 
 ```bash
