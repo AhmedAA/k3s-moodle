@@ -87,7 +87,8 @@ flux bootstrap github \
   --repository=<repo-name> \
   --branch=main \
   --path=./apps/moodle/overlays/instance-maahad \
-  --personal
+  --personal \
+  --token-auth
 ```
 
 Flux will immediately begin deploying the resources. Any future commits to the `main` branch will automatically sync to the cluster.
