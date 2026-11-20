@@ -93,6 +93,24 @@ flux bootstrap github \
 
 Flux will immediately begin deploying the resources. Any future commits to the `main` branch will automatically sync to the cluster.
 
+To start a manual sync/pull, run `flux reconcile kustomization flux-system --with-source`
+
+#### Renewing PAT
+
+You of course should not be using a long-lived PAT, so below are the
+instructions on how to renew it:
+
+```bash
+unset HISTFILE # since you are writing a secret in plaintext
+kubectl create secret generic flux-system \
+  --namespace=flux-system \
+  --from-literal=username=<YOUR_GIT_USERNAME> \
+  --from-literal=password=<YOUR_NEW_PAT> \
+  --dry-run=client -o yaml | kubectl apply -f -
+```
+
+You can then verify that it worked by running `flux reconcile source git flux-system`
+
 ---
 
 ## Migration from Legacy Bitnami Helm Deployments
